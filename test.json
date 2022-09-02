@@ -1,0 +1,20 @@
+{
+  "animal": {
+    "tagId": "QWL123",
+    "race": "BRAHMAN",
+    "genre": "FEMALE",
+    "boughtPrice": 150,
+    "boughtFrom": "LOCODRERO",
+    "initialWeight": 150,
+    "actualLocation": "LA NELIDA",
+    "isCastrated": false,
+    "medicalTreatment": [
+      {
+        "description": "VACUNA ANTIAFTOSA",
+        "date": "2019-01-01",
+        "name": "VACUNA"
+      }
+    ],
+    "allLocations": ["LA NELIDA", "LA JOSEFINA"]
+  }
+}
