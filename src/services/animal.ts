@@ -30,4 +30,29 @@ const deleteAnimal = async (id: string) => {
   return responseDelete;
 };
 
-export { insertAnimal, getAnimals, getAnimal, updateAnimal, deleteAnimal };
+const getAnimalsByQuery = async (query: any) => {
+  if (query.isCastrated) {
+    query.isCastrated = query.isCastrated === "true";
+  }
+  if (query.isAlive) {
+    query.isAlive = query.isAlive === "true";
+  }
+  if (query.isSold) {
+    query.isSold = query.isSold === "true";
+  }
+
+  if (query.boughtPrice) {
+    query.boughtPrice = Number(query.boughtPrice);
+  }
+  const animals = await AnimalModel.find(query);
+  return animals;
+};
+
+export {
+  insertAnimal,
+  getAnimals,
+  getAnimal,
+  updateAnimal,
+  deleteAnimal,
+  getAnimalsByQuery,
+};

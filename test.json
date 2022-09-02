@@ -8,7 +8,7 @@
     "initialWeight": 150,
     "actualLocation": "LA NELIDA",
     "isCastrated": false,
-    "medicalTreatment": [
+    "medicalTreatments": [
       {
         "description": "VACUNA ANTIAFTOSA",
         "date": "2019-01-01",

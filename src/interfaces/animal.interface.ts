@@ -19,7 +19,7 @@ export interface Animal {
 
 export interface MedicalTreatment {
   name: string;
-  date: Date;
+  date: string;
   description: string;
 }
 

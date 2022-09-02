@@ -3,6 +3,7 @@ import {
   deleteAnimal,
   getAnimal,
   getAnimals,
+  getAnimalsByQuery,
   insertAnimal,
   updateAnimal,
 } from "../services/animal";
@@ -58,6 +59,16 @@ export class AnimalsController {
       res.send(responseDelete);
     } catch (error) {
       handleHttpError(res, "ERROR_DELETE_ANIMAL", error);
+    }
+  }
+
+  public async getAnimalsByQuery(req: Request, res: Response): Promise<void> {
+    try {
+      const query = req.query;
+      const animals = await getAnimalsByQuery(query);
+      res.send(animals);
+    } catch (error) {
+      handleHttpError(res, "ERROR_GET_ANIMALS_BY_QUERY", error);
     }
   }
 }

@@ -7,6 +7,8 @@ const itemsController = new AnimalsController();
 
 router.get("/", itemsController.getAnimals);
 
+router.get("/query", itemsController.getAnimalsByQuery);
+
 router.post("/", itemsController.createAnimal);
 
 router.get("/:id", itemsController.getAnimal);

@@ -40,7 +40,6 @@ const AnimalSchema = new Schema<Animal>(
     },
     medicalTreatments: {
       type: [{}],
-      allowNull: true,
     },
     isAlive: {
       type: Boolean,
