@@ -18,3 +18,11 @@
     "allLocations": ["LA NELIDA", "LA JOSEFINA"]
   }
 }
+
+{
+  "user" : {
+    "name" : "Alejandro Tomasella",
+    "email" : "elaleloco09@gmai.com",
+    "password" : "123456"
+  }
+}
