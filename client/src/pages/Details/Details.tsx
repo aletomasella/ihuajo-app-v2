@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { api } from "../../utilities";
 import { Animal } from "../../models/animals";
+import EditData from "./components/EditData";
 
 const Details = () => {
   const { id } = useParams();
@@ -20,6 +21,7 @@ const Details = () => {
         <div>
           <h1>{animal.tagId}</h1>
           <p>{animal.actualLocation}</p>
+          <EditData animal={animal as Animal} />
         </div>
       )}
     </>

@@ -2,7 +2,7 @@ export interface Animal {
   _id: string;
   tagId: string;
   race: string;
-  genre: Genre;
+  genre: "MALE" | "FEMALE";
   boughtPrice: number;
   boughtFrom: string;
   initialWeight: number;
@@ -18,11 +18,6 @@ export interface Animal {
   soldDate: Date;
   createdAt: Date;
   updatedAt: Date;
-}
-
-enum Genre {
-  FEMALE = "FEMALE",
-  MALE = "MALE",
 }
 
 interface MedicalTreatment {
