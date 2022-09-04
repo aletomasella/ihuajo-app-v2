@@ -8,6 +8,13 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send({
+    message: "BIENVENIDO A MI API PARA EL PROYECTO DE IHUAJO S.R.L.",
+  });
+});
+
 app.use("/", Routes);
 
 app.get("*", (req, res) => {

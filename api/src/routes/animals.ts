@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import { AnimalsController } from "../controllers/animals";
+import { checkJWT } from "../middlewares/session";
 
 const router = Router();
 
