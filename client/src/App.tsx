@@ -1,12 +1,18 @@
 import { Navbar } from "./components";
-import { Home } from "./pages/Home/components";
+import { Home, Details } from "./pages";
+import { LayoutContainer } from "./styled-components";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Home />
-      <div>HOLA</div>
+      <LayoutContainer>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/details/:id" element={<Details />} />
+        </Routes>
+      </LayoutContainer>
     </>
   );
 }
