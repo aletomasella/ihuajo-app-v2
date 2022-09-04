@@ -6,7 +6,7 @@ const PATH_ROUTER = `${__dirname}`;
 const router = Router();
 
 const cleanFileName = (fileName: string) => {
-  return fileName.replace(".ts", "");
+  return fileName.split(".")[0];
 };
 
 readdirSync(PATH_ROUTER).forEach((file) => {
