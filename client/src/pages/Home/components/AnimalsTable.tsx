@@ -34,7 +34,7 @@ const colums = [
       <>
         <Link
           to={`details/${params.value}`}
-          style={{ textDecoration: "none", color: "white" }}
+          style={{ textDecoration: "none", color: "black" }}
         >
           {params.value}
         </Link>
@@ -111,7 +111,7 @@ const AnimalsTable = () => {
       style={{
         height: "100%",
         width: "100%",
-        color: "white",
+        border: "2px solid rgba(0, 0, 0, 0.12)",
       }}
     />
   );
