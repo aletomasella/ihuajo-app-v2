@@ -7,6 +7,7 @@ import {
   Select,
   MenuItem,
   Button,
+  Typography,
 } from "@mui/material";
 import { Animal, MedicalTreatment } from "../../../models/animals";
 import { dateFilter } from "../../../utilities/dateFilter";
@@ -22,7 +23,7 @@ const EditData = ({ animal }: { animal: Animal }) => {
     boughtFrom: animal.boughtFrom || "",
     initialWeight: animal.initialWeight || 0,
     finalWeight: animal.finalWeight || 0,
-    actualLocation: "",
+    actualLocation: animal.actualLocation || "",
     isCastrated: animal.isCastrated ? 1 : 0,
     medicalTreatments: animal.medicalTreatments || [],
     isAlive: animal.isAlive ? 1 : 0,
@@ -69,9 +70,11 @@ const EditData = ({ animal }: { animal: Animal }) => {
     input.isCastrated = input.isCastrated === 1 ? true : false;
     input.isSold = input.isSold === 1 ? true : false;
     input.soldDate = input.soldDate === "2020-01-01" ? null : input.soldDate;
-    input.allLocations = input.actualLocation
-      ? [...animal.allLocations, input.actualLocation]
-      : animal.allLocations;
+    input.allLocations =
+      input.actualLocation &&
+      !animal.allLocations.includes(input.actualLocation)
+        ? [...animal.allLocations, input.actualLocation]
+        : animal.allLocations;
     axios
       .put(`${api.endopoints.animalsURL}/${animal.tagId}`, { animal: input })
       .then((res) => {
@@ -86,13 +89,16 @@ const EditData = ({ animal }: { animal: Animal }) => {
     <>
       <FormGroup
         style={{
-          width: "50%",
+          width: "70%",
           display: "flex",
           flexDirection: "row",
           textAlign: "center",
           alignContent: "center",
           justifyContent: "center",
           margin: "auto",
+          border: "1px solid white",
+          borderRadius: "20px",
+          background: "rgba(255, 255, 255, 0.5)",
         }}
       >
         <FormControl style={{ width: "45%", margin: "10px" }}>
@@ -224,6 +230,16 @@ const EditData = ({ animal }: { animal: Animal }) => {
           />
         </FormControl>
         <FormControl style={{ width: "45%", margin: "10px" }}>
+          <InputLabel htmlFor="soldPrice">Precio de venta</InputLabel>
+          <Input
+            id="soldPrice"
+            name="soldPrice"
+            value={input.soldPrice}
+            onChange={handleChange}
+            type="number"
+          />
+        </FormControl>
+        <FormControl style={{ width: "45%", margin: "10px" }}>
           <InputLabel id="isAlive">Vive</InputLabel>
           <Select
             labelId="isAlive"
@@ -244,16 +260,30 @@ const EditData = ({ animal }: { animal: Animal }) => {
 
       {addMedicalTreatment ? (
         <div>
-          <h2>Agrega un tratamiento medico</h2>
+          <Typography
+            sx={{
+              mb: 1.5,
+              fontSize: 20,
+              width: "100%",
+              fontWeight: "bold",
+              padding: "15px",
+            }}
+            color="text.secondary"
+          >
+            Agrega un tratamiento medico
+          </Typography>
           <FormGroup
             style={{
-              width: "50%",
+              width: "70%",
               display: "flex",
               flexDirection: "row",
               textAlign: "center",
               alignContent: "center",
               justifyContent: "center",
               margin: "auto",
+              border: "1px solid white",
+              borderRadius: "20px",
+              background: "rgba(255, 255, 255, 0.5)",
             }}
           >
             <FormControl style={{ width: "45%", margin: "10px" }}>

@@ -1,5 +1,5 @@
 import { Navbar } from "./components";
-import { Home, Details } from "./pages";
+import { Home, Details, CreateAnimal } from "./pages";
 import { LayoutContainer } from "./styled-components";
 import { Routes, Route } from "react-router-dom";
 
@@ -11,6 +11,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/details/:id" element={<Details />} />
+          <Route path="/create" element={<CreateAnimal />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </LayoutContainer>
     </>

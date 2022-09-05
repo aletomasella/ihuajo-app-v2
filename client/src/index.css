@@ -1,5 +1,5 @@
 html {
-  background-color: #c9d0d7;
+  background-color: #c2c2c3;
   text-align: center;
 }
 
@@ -14,13 +14,4 @@ html {
   button {
     background-color: #f9f9f9;
   }
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin: 0;
-  color: #ffffff;
-  text-align: center;
-  text-transform: uppercase;
 }
