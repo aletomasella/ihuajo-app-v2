@@ -10,9 +10,10 @@ import {
 } from "@mui/material";
 import { Animal, MedicalTreatment } from "../../../models/animals";
 import { dateFilter } from "../../../utilities/dateFilter";
+import axios from "axios";
+import { api } from "../../../utilities";
 
 const EditData = ({ animal }: { animal: Animal }) => {
-  console.log(animal);
   const [input, setInput] = useState<Animal | any>({
     tagId: animal.tagId || "",
     race: animal.race || "",
@@ -21,16 +22,14 @@ const EditData = ({ animal }: { animal: Animal }) => {
     boughtFrom: animal.boughtFrom || "",
     initialWeight: animal.initialWeight || 0,
     finalWeight: animal.finalWeight || 0,
-    actualLocation: animal.actualLocation || "",
+    actualLocation: "",
     isCastrated: animal.isCastrated ? 1 : 0,
-    medicalTreatments: [],
+    medicalTreatments: animal.medicalTreatments || [],
     isAlive: animal.isAlive ? 1 : 0,
     isSold: animal.isSold ? 1 : 0,
     soldPrice: animal.soldPrice || 0,
     soldTo: animal.soldTo || "",
-    soldDate: animal.soldDate
-      ? dateFilter(`${animal.soldDate}`)
-      : dateFilter(new Date().toISOString()),
+    soldDate: animal.soldDate ? dateFilter(`${animal.soldDate}`) : "2020-01-01",
   });
   const [addMedicalTreatment, setAddMedicalTreatment] = useState(false);
   const [medicalTreatments, setMedicalTreatments] = useState<MedicalTreatment>({
@@ -69,9 +68,18 @@ const EditData = ({ animal }: { animal: Animal }) => {
     input.isAlive = input.isAlive === 1 ? true : false;
     input.isCastrated = input.isCastrated === 1 ? true : false;
     input.isSold = input.isSold === 1 ? true : false;
-    input.soldDate = new Date(input.soldDate).toISOString();
-    input.allLocations = [...animal.allLocations, input.actualLocation];
-    console.log(input);
+    input.soldDate = input.soldDate === "2020-01-01" ? null : input.soldDate;
+    input.allLocations = input.actualLocation
+      ? [...animal.allLocations, input.actualLocation]
+      : animal.allLocations;
+    axios
+      .put(`${api.endopoints.animalsURL}/${animal.tagId}`, { animal: input })
+      .then((res) => {
+        console.log(res.data);
+        if (res.status === 200) {
+          alert("ANIMAL MODIFICADO CORRECTAMENTE");
+        }
+      });
   };
 
   return (
@@ -106,13 +114,18 @@ const EditData = ({ animal }: { animal: Animal }) => {
           />
         </FormControl>
         <FormControl style={{ width: "45%", margin: "10px" }}>
-          <InputLabel htmlFor="genre">Genero</InputLabel>
-          <Input
+          <InputLabel id="genre">Genero</InputLabel>
+          <Select
+            labelId="genre"
             id="genre"
             name="genre"
             value={input.genre}
+            label="Castrado"
             onChange={handleChange}
-          />
+          >
+            <MenuItem value={"MALE"}>MACHO</MenuItem>
+            <MenuItem value={"FEMALE"}>HEMBRA</MenuItem>
+          </Select>
         </FormControl>
         <FormControl style={{ width: "45%", margin: "10px" }}>
           <InputLabel htmlFor="boughtPrice">Precio de Compra</InputLabel>
