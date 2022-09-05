@@ -38,7 +38,7 @@ const colums = [
         >
           {params.value}
         </Link>
-        <Button onClick={() => deleteData(params.value)}>🔨</Button>
+        <Button onClick={() => deleteData(params.value)}>❌</Button>
       </>
     ),
   },
