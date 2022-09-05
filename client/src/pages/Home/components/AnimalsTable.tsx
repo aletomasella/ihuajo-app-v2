@@ -1,10 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid, GridRenderCellParams } from "@mui/x-data-grid";
-import { Checkbox } from "@mui/material";
+import { Button, Checkbox } from "@mui/material";
 import { Animal } from "../../../models/animals";
 import axios from "axios";
 import { api } from "../../../utilities";
 import { Link } from "react-router-dom";
+
+const deleteData = (id: string) => {
+  if (window.confirm("¿Estas seguro de que quieres eliminar este dato?")) {
+    return axios
+      .delete(`${api.endopoints.animalsURL}/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Datos eliminados correctamente");
+        }
+      })
+      .catch((err) => {
+        alert("Error al eliminar los datos");
+      })
+      .finally(() => {
+        window.location.reload();
+      });
+  }
+};
 
 const colums = [
   {
@@ -20,6 +38,7 @@ const colums = [
         >
           {params.value}
         </Link>
+        <Button onClick={() => deleteData(params.value)}>🔨</Button>
       </>
     ),
   },
