@@ -20,7 +20,6 @@ const Details = () => {
       {animal && (
         <div>
           <h1>{animal.tagId}</h1>
-          <p>{animal.actualLocation}</p>
           <EditData animal={animal as Animal} />
         </div>
       )}

@@ -20,7 +20,7 @@ export interface Animal {
   updatedAt: Date;
 }
 
-interface MedicalTreatment {
+export interface MedicalTreatment {
   name: string;
   description: string;
   date: string;
