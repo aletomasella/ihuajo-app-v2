@@ -113,7 +113,7 @@ const AnimalsTable = () => {
       columns={colums}
       pageSize={PAGE_SIZE}
       rowsPerPageOptions={[PAGE_SIZE]}
-      getRowId={(row) => row.tagId}
+      getRowId={(row) => row._id}
       style={{
         height: "100%",
         width: "100%",
