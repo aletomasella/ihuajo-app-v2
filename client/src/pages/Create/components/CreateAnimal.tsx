@@ -78,7 +78,9 @@ const CreateAnimal = () => {
     axios.post(api.endopoints.animalsURL, { animal: input }).then((res) => {
       console.log(res.data);
       if (res.status === 200) {
-        alert("ANIMAL AGREGADO CORRECTAMENTE");
+        alert("Animal Agregado Correctamente");
+      } else {
+        alert("Error al agregar el animal");
       }
     });
   };

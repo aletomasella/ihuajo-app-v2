@@ -81,11 +81,12 @@ const EditData = ({ animal }: { animal: Animal }) => {
         ? [...animal.allLocations, input.actualLocation]
         : animal.allLocations;
     axios
-      .put(`${api.endopoints.animalsURL}/${animal.tagId}`, { animal: input })
+      .put(`${api.endopoints.animalsURL}/${animal._id}`, { animal: input })
       .then((res) => {
-        console.log(res.data);
         if (res.status === 200) {
-          alert("ANIMAL MODIFICADO CORRECTAMENTE");
+          alert("Animal modificado con éxito");
+        } else {
+          alert("Error al modificar animal");
         }
       });
   };
