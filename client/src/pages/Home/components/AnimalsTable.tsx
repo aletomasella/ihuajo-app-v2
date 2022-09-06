@@ -26,21 +26,27 @@ const deleteData = (id: string) => {
 
 const colums = [
   {
-    field: "tagId",
-    headerName: "Nro de Caravana",
+    field: "_id",
+    headerName: "ID",
+    width: 150,
     flex: 1,
-    minWidth: 150,
     renderCell: (params: GridRenderCellParams) => (
       <>
         <Link
-          to={`details/${params.value}`}
+          to={`/details/${params.value}`}
           style={{ textDecoration: "none", color: "black" }}
         >
-          {params.value}
+          Detalles
         </Link>
         <Button onClick={() => deleteData(params.value)}>❌</Button>
       </>
     ),
+  },
+  {
+    field: "tagId",
+    headerName: "Nro de Caravana",
+    flex: 1,
+    renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
   },
   {
     field: "race",

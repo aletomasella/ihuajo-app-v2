@@ -66,6 +66,11 @@ const EditData = ({ animal }: { animal: Animal }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    input.tagId = input.tagId.toUpperCase().replace(/\s/g, "");
+    input.race = input.race.toUpperCase();
+    input.boughtFrom = input.boughtFrom.toUpperCase();
+    input.actualLocation = input.actualLocation.toUpperCase();
+    input.soldTo = input.soldTo.toUpperCase();
     input.isAlive = input.isAlive === 1 ? true : false;
     input.isCastrated = input.isCastrated === 1 ? true : false;
     input.isSold = input.isSold === 1 ? true : false;

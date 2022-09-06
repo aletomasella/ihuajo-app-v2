@@ -12,7 +12,7 @@ const getAnimals = async () => {
 };
 
 const getAnimal = async (id: string) => {
-  const animal = await AnimalModel.findOne({ tagId: id });
+  const animal = await AnimalModel.findOne({ _id: id });
   if (animal) {
     return animal;
   } else {
@@ -21,12 +21,12 @@ const getAnimal = async (id: string) => {
 };
 
 const updateAnimal = async (id: string, animal: Animal) => {
-  const responseUpdate = await AnimalModel.updateOne({ tagId: id }, animal);
+  const responseUpdate = await AnimalModel.updateOne({ _id: id }, animal);
   return responseUpdate;
 };
 
 const deleteAnimal = async (id: string) => {
-  const responseDelete = await AnimalModel.deleteOne({ tagId: id });
+  const responseDelete = await AnimalModel.deleteOne({ _id: id });
   return responseDelete;
 };
 
