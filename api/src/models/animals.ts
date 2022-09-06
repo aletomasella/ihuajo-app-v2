@@ -6,7 +6,6 @@ const AnimalSchema = new Schema<Animal>(
     tagId: {
       type: String,
       required: true,
-      unique: true,
     },
     race: {
       type: String,
