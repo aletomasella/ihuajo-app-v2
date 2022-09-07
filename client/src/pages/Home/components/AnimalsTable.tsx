@@ -6,6 +6,8 @@ import axios from "axios";
 import { api } from "../../../utilities";
 import { Link } from "react-router-dom";
 
+// Este codigo es para el boton de borrar los datos de base de datos.
+
 const deleteData = (id: string) => {
   if (window.confirm("¿Estas seguro de que quieres eliminar este dato?")) {
     return axios
